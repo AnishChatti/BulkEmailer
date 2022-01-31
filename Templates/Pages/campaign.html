@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+<nav class="navbar navbar-light" style="background-color: orange;"  >
+    <!-- linear-gradient(90deg, rgba(250,75,0,1) 31%, rgba(255,188,0,1) 100%); -->
+    <h1 >New Campaign</h1>
+    <span>
+        <a href="{% url 'index' %}">
+                <img src="https://static.thenounproject.com/png/2916775-200.png" height= "40" width= "40" >           
+        </a>
+        <p1 >Go Back</p1>        
+         </span>
+</nav>
+<div class="row">
+    <div class="col-lg-8">
+        <form  enctype="multipart/form-data" action='campaign' method='POST' style="width: 300px; margin:20px 0px 0px 50px;">
+            {%csrf_token%}
+            <h1 >Fill the details</h1>
+            <label >Campaign Name:</label>
+            <input class="form-control"  name="campaignname" type="text"  > 
+            <label >Body:</label>
+            <textarea class="form-control is-invalid" name="body" style="width: 700px; height: 300px;"  required></textarea>
+            <label>Upload a excel or csv file:</label>
+            <input class="form-control is-invalid " name="inputfile" type="file" required> <br>
+            <button class="form-control btn " style="background-color:orange;" type="submit" >Let's Go</button>
+            {%for m in messages%}
+            <h3>{{m}}</h3>
+            {%endfor%}
+        </form>
+    </div>
+    <div class="col-lg-4" style="padding-top: 250px;">
+        <h4>Note:<br>
+            1.Use &{'Column Name'}& to set your template.<br>
+            2.Make sure your excel's first column is 'Email'</h4>
+    </div>
+  </div>
+
+{% endblock %}

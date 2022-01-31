@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<nav class="navbar navbar-light bg-dark" >
+    <!-- style="background-color: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(250,75,0,1) 31%, rgba(255,188,0,1) 100%);" -->
+    <h1 style="color: orange;">DashBoard</h1>
+    <span style="color: white;">
+      <h3>Hey User!</h3>  
+    <button type="button" class="btn btn-dark" onclick="location.href='logout'">Logout</button>
+        <button type="button" class="btn btn-dark"  onclick="location.href = 'campaign'">Start Campaign</button>
+    </span>
+  </nav>
+  <div  style="margin:50px 50px 50px 50px;">
+<h4>Campaign History</h4><br>
+<table border=5 width=100% >
+    <col style="width:10%">
+	<col style="width:70%">
+    <col style="width:10%">
+    <col style="width:10%">
+    <thead >
+        <tr>
+            <td>Campaign Name</td>
+            <td>Body</td>
+            <td>Receivers Details</td>
+            <td>Date</td>
+        </tr>
+    </thead>
+    <tbody>
+        {%if campaign%}
+        {% for camp in campaign%}
+        <tr>
+            <td>{{camp.Name}}</td>
+            <td>{{camp.Body}}</td>
+            <td> <a href=/media/{{camp.Inputfile}} download>Download File</a></td>
+            <td>{{camp.Date}}</td>
+        </tr>
+        {% endfor %}
+        {% endif %}
+        
+    </tbody>
+</table>
+</div>
+{% endblock %}

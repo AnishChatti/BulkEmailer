@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<nav class="navbar navbar-dark bg-dark "  >
+    <!-- style="background-color: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(250,75,0,1) 31%, rgba(255,188,0,1) 100%);" -->
+    <h1 style="color: orange;">Let's Start</h1>
+</nav>
+ <form action="signup" method="POST"style="text-align: left ; margin:10px 0px 0px 50px;">
+    {% csrf_token %}
+<div class="form-group" style="width:400px">
+<h1 >SIGN UP!</h1>
+<p><label for="Firstname" >First Name:</label>
+<input class="form-control" name="first" id="Firstname" type="text" placeholder="john" required></input>
+<label for="lastname" >Last Name:</label>
+<input class="form-control" name="last" id="lastname" type="text"placeholder="smith" required></input></p>
+<p> <label for="male">Male:</label>
+<input  id="male" name="gender" type="radio" value="M" required></input>
+<label for="female">Female:</label>
+<input  id="female" name="gender" type="radio" value="F" required></input>
+<label for="other">Other:</label>
+<input  id="other" name="gender"type="radio" value="O" required></input></p>
+<p><label for="email">Email:</label>
+<input class="form-control" name="email" id="email" type="email" required placeholder="your email"></input>
+<label for="pass" >Password:</label>
+<input class="form-control" name="password1" type="password"pattern=".{8,16}" required title="must be between 8 to 16 characters"></input></p>
+<label for="pass" >Confirm Password:</label>
+<input class="form-control" name="password2" type="password"pattern=".{8,16}" required ></input></p>
+<p><label>Date of Birth:</label>
+<input class="form-control" name="Date" type="Date">
+</p>
+<input class="form-control btn btn-primary" type="submit">
+ </div>
+ <a href="/login">Already have an account? Login</a>
+ {%for m in messages%}
+<h3>{{m}}</h3>
+{%endfor%}
+</form>  
+
+{% endblock %}

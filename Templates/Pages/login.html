@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<nav class="navbar navbar-dark bg-dark "  >
+    <!-- style="background-color: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(250,75,0,1) 31%, rgba(255,188,0,1) 100%);" -->
+
+        <h1 style="color: orange;">Welcome</h1>
+
+    
+</nav>
+<form action="login" method="POST" style="text-align: left ; margin:50px 0px 0px 50px;">
+  {%csrf_token%}
+    <h1 >LOGIN!</h1>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input style="width:300px" name="email" type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Enter email" required >
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" name="password" style="width:300px" class="form-control" id="InputPassword" placeholder="Password" required><br>
+      <button type="submit" class="btn btn-primary">Submit</button><br>
+       <a href="/signup">Don't have a account? Sign-Up</a>
+       {%for m in messages%}
+       <h3>{{m}}</h3>
+       {%endfor%}
+  </form>
+{% endblock %}
